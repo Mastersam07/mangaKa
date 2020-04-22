@@ -1,6 +1,6 @@
 # komikkurida
 
-A manga application.
+Free and open source manga reader for mobile devices(Android/iOS)
 
 ## Getting Started
 
