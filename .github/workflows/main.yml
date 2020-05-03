@@ -7,7 +7,7 @@ jobs:
     name: Build master Android app
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
@@ -24,7 +24,6 @@ jobs:
         with:
           name: apk
           path: build/app/outputs/apk/debug/app-master.apk
-      - run: git diff --exit-code
   build-pr:
     name: Build PR Android app
     runs-on: ubuntu-latest
@@ -46,4 +45,3 @@ jobs:
         with:
           name: apk
           path: build/app/outputs/apk/debug/app-pr.apk
-      - run: git diff --exit-code
