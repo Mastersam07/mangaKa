@@ -55,5 +55,7 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: apk
+      - name: Change diffuse permissions
+        run: chmod +x ./diffuse
       - name: Execute Diffuse
         run: ./diffuse diff apk/app-master.apk apk/app-pr.apk
