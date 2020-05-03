@@ -45,3 +45,15 @@ jobs:
         with:
           name: apk
           path: build/app/outputs/apk/debug/app-pr.apk
+  # Execute Diffuse only when the two APKs are built successfully
+  diffuse:
+    needs: [build-master, build-pr]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download APKs
+        uses: actions/download-artifact@v1
+        with:
+          name: apk
+      - name: Execute Diffuse
+        run: ./diffuse diff apk/app-master.apk apk/app-pr.apk
