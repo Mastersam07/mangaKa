@@ -13,7 +13,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.8'
+          flutter-version: '1.12.13+hotfix.9'
           channel: 'stable'
       - run: flutter pub get
       - run: |
@@ -34,7 +34,7 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.8'
+          flutter-version: '1.12.13+hotfix.9'
           channel: 'stable'
       - run: flutter pub get
       - run: |
