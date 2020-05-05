@@ -57,8 +57,14 @@ jobs:
         with:
           java-version: '12.x'
       - run: git clone https://github.com/JakeWharton/diffuse.git
-      - run: ./diffuse/gradlew assemble
-      - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
+      - name: generate diffuse
+        run: |
+            ls
+            ./gradlew assemble
+            echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
+        working-directory: diffuse
+#       - run: ./diffuse/gradlew assemble
+#       - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
   # Execute Diffuse only when setup is successful
   diffuse:
     needs: [build-master, build-pr]
