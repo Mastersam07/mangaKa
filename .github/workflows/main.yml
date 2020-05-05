@@ -60,7 +60,7 @@ jobs:
       - name: generate diffuse
         run: ./gradlew assemble
         working-directory: diffuse
-      - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/diffuse/build/diffuse"
+#       - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/diffuse/build/diffuse"
 #       - run: ./diffuse/gradlew assemble
 #       - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
   # Execute Diffuse only when setup is successful
@@ -77,7 +77,7 @@ jobs:
 #       - run: git clone https://github.com/JakeWharton/diffuse.git
 #       - run: ./gradlew assemble
 #       - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
-#       - name: Change diffuse permissions
-#         run: chmod +x ./diffuse
+      - name: Change diffuse permissions
+        run: chmod +x ./diffuse/diffuse/build/diffuse
       - name: Execute Diffuse
-        run: diffuse diff apk/app-master.apk apk/app-pr.apk
+        run: ./diffuse/diffuse/build/diffuse diff apk/app-master.apk apk/app-pr.apk
