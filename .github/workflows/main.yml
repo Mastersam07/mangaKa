@@ -47,7 +47,19 @@ jobs:
         with:
           name: apk
           path: build/app/outputs/apk/debug/app-pr.apk
-  # Execute Diffuse only when the two APKs are built successfully
+  # Setup Diffuse only when the two APKs are built successfully
+  setup-diffuse:
+    name: Setup diffuse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - run: git clone https://github.com/JakeWharton/diffuse.git
+      - run: ./gradlew assemble
+      - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
+  # Execute Diffuse only when setup is successful
   diffuse:
     needs: [build-master, build-pr]
     runs-on: ubuntu-latest
@@ -57,11 +69,11 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: apk
-      - name: setup diffuse
-      - run: git clone https://github.com/JakeWharton/diffuse.git
-      - run: ./gradlew assemble
-      - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
+#       - name: setup diffuse
+#       - run: git clone https://github.com/JakeWharton/diffuse.git
+#       - run: ./gradlew assemble
+#       - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
 #       - name: Change diffuse permissions
 #         run: chmod +x ./diffuse
       - name: Execute Diffuse
-        run: ./diffuse diff apk/app-master.apk apk/app-pr.apk
+        run: diffuse diff apk/app-master.apk apk/app-pr.apk
