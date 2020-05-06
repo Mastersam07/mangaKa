@@ -63,7 +63,7 @@ jobs:
       - name: Upload diffuse executable
         uses: actions/upload-artifact@v1
         with:
-          name: diffuse
+          name: diff
           path: diffuse/diffuse/build/diffuse
 #       - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/diffuse/build/diffuse"
 #       - run: ./diffuse/gradlew assemble
