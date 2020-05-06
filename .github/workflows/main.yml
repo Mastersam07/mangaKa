@@ -15,17 +15,17 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.9'
+          flutter-version: '1.17'
           channel: 'stable'
       - run: flutter pub get
       - run: |
-            flutter build apk --debug
-            mv build/app/outputs/apk/debug/app-debug.apk build/app/outputs/apk/debug/app-master.apk
+            flutter build apk
+            mv build/app/outputs/apk/release/app-release.apk build/app/outputs/apk/release/app-master.apk
       - name: Upload master APK
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: build/app/outputs/apk/debug/app-master.apk
+          path: build/app/outputs/apk/release/app-master.apk
   build-pr:
     name: Build PR Android app
     runs-on: ubuntu-latest
@@ -41,12 +41,12 @@ jobs:
       - run: flutter pub get
       - run: |
             flutter build apk --debug
-            mv build/app/outputs/apk/debug/app-debug.apk build/app/outputs/apk/debug/app-pr.apk
+            mv build/app/outputs/apk/release/app-release.apk build/app/outputs/apk/release/app-pr.apk
       - name: Upload pr APK
         uses: actions/upload-artifact@v1
         with:
           name: apk
-          path: build/app/outputs/apk/debug/app-pr.apk
+          path: build/app/outputs/apk/release/app-pr.apk
   # Setup Diffuse only when the two APKs are built successfully
   setup-diffuse:
     name: Setup diffuse
