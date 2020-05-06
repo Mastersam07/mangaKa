@@ -60,6 +60,11 @@ jobs:
       - name: generate diffuse
         run: ./gradlew assemble
         working-directory: diffuse
+      - name: Upload diffuse executable
+        uses: actions/upload-artifact@v1
+        with:
+          name: diffuse
+          path: diffuse/diffuse/build/diffuse
 #       - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/diffuse/build/diffuse"
 #       - run: ./diffuse/gradlew assemble
 #       - run: echo "::add-path::$GITHUB_WORKSPACE/diffuse/build/diffuse"
@@ -73,6 +78,10 @@ jobs:
         uses: actions/download-artifact@v1
         with:
           name: apk
+      - name: Download diffuse executable
+        uses: actions/download-artifact@v1
+        with:
+          name: diff
 #       - name: setup diffuse
 #       - run: git clone https://github.com/JakeWharton/diffuse.git
 #       - run: ./gradlew assemble
@@ -80,7 +89,7 @@ jobs:
       - name: Change diffuse permissions
         run: |
             ls
-            chmod +x ./diffuse/build/diffuse
-        working-directory: diffuse
+            chmod +x ./diffuse
+        working-directory: diff
       - name: Execute Diffuse
-        run: ./diffuse/diffuse/build/diffuse diff apk/app-master.apk apk/app-pr.apk
+        run: ./diff/diffuse diff apk/app-master.apk apk/app-pr.apk
