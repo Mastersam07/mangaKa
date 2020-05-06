@@ -40,7 +40,7 @@ jobs:
           channel: 'stable'
       - run: flutter pub get
       - run: |
-            flutter build apk --debug
+            flutter build apk
             mv build/app/outputs/apk/release/app-release.apk build/app/outputs/apk/release/app-pr.apk
       - name: Upload pr APK
         uses: actions/upload-artifact@v1
