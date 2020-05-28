@@ -51,7 +51,7 @@ class Home extends StatelessWidget {
 //            crossAxisSpacing: 20.0,
             children: books.map((book) => createTile(book)).toList(),
           ),
-        )
+        ),
       ],
     );
 
