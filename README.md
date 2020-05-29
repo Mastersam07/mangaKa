@@ -3,7 +3,7 @@
 |  | [![stable release](https://img.shields.io/github/release/mastersam07/komikkurida.svg?maxAge=3600&label=download)](https://github.com/mastersam07/komikkurida/releases) |  |  |  |
 
 
-# ![app icon](./.github/readme-images/app-icon.png)komikkurida
+# ![app icon]()komikkurida
 komikkurida is a free and open source manga reader for mobile devices(Android/iOS)
 
 <!--![screenshots of app](./.github/readme-images/screens.png)-->
