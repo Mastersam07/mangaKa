@@ -60,18 +60,19 @@ class MangaDetails {
   }
 }
 
-class Chapters{
+class Chapters {
   List<Items> chapters;
 
   Chapters({this.chapters});
 
-  factory Chapters.fromList(List chapterData){
-    List<Items> itemList = chapterData.map((items) => Items.fromList(items)).toList();
+  factory Chapters.fromList(List chapterData) {
+    List<Items> itemList =
+        chapterData.map((items) => Items.fromList(items)).toList();
     return Chapters(chapters: itemList);
   }
 }
 
-class Items{
+class Items {
   int data1;
   double data2;
   String data3;
@@ -79,13 +80,8 @@ class Items{
 
   Items({this.data1, this.data2, this.data3, this.data4});
 
-  factory Items.fromList(List myData){
+  factory Items.fromList(List myData) {
     return Items(
-      data1: myData[0],
-      data2: myData[1],
-      data3: myData[2],
-      data4: myData[3]
-    );
+        data1: myData[0], data2: myData[1], data3: myData[2], data4: myData[3]);
   }
 }
-

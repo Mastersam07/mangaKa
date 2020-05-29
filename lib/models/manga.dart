@@ -31,7 +31,6 @@ class Manga {
 
   Manga(this.image, this.title, this.id, this.alias, this.status, this.hits);
 
-
   Manga.fromJson(Map<String, dynamic> json) {
     image = json['im'];
     title = json['t'];

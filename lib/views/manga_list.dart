@@ -88,7 +88,7 @@ class MangaList extends StatelessWidget {
       itemCount: mangaList.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
-        childAspectRatio: 1.5/1.8,
+        childAspectRatio: 1.5 / 1.8,
       ),
       itemBuilder: (context, index) {
         return Padding(
@@ -143,7 +143,7 @@ class Error extends StatelessWidget {
               'Retry',
               style: TextStyle(
 //                color: Colors.white,
-              ),
+                  ),
             ),
             onPressed: onRetryPressed,
           )

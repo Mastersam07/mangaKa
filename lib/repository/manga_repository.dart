@@ -1,9 +1,7 @@
 import 'package:komikkurida/models/manga.dart';
 import 'package:komikkurida/networking/api_base_helper.dart';
 
-
 class MangaRepository {
-
   ApiBaseHelper _helper = ApiBaseHelper();
 
   Future<List<Manga>> fetchMangaList() async {
