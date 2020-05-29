@@ -1,6 +1,6 @@
-| Build | Stable | Weekly Preview | Contribute | Support Server |
+| Build | Stable | Tests | Contribute | Support Server |
 |-------|----------|---------|------------|---------|
-|  | [![stable release](https://img.shields.io/github/release/mastersam07/komikkurida.svg?maxAge=3600&label=download)](https://github.com/mastersam07/komikkurida/releases) |  |  |  |
+| [![Build](https://github.com/mastersam07/komikkurida/workflows/Build%20Client/badge.svg)](https://github.com/Mastersam07/komikkurida/actions?query=workflow%3A%22Build+Client%22) | [![stable release](https://img.shields.io/github/release/mastersam07/komikkurida.svg?maxAge=3600&label=download)](https://github.com/mastersam07/komikkurida/releases) | [![Tests](https://github.com/mastersam07/komikkurida/workflows/Client%20Tests/badge.svg)](https://github.com/Mastersam07/komikkurida/actions?query=workflow%3A%22Client+Tests%22) |  |  |
 
 
 # ![app icon]()komikkurida
