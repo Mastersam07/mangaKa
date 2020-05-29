@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:komikkurida/models/data.dart';
 import 'package:komikkurida/views/detail.dart';
 import 'package:komikkurida/views/home.dart';
+import 'package:komikkurida/views/manga_list.dart';
 
 void main() => runApp(new MyApp());
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.yellow,
         platform: TargetPlatform.iOS,
       ),
-      home: Home(),
+      home: MangaScreen(),
       onGenerateRoute: (settings) => generateRoute(settings),
     );
   }

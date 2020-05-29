@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:komikkurida/networking/api_exceptions.dart';
 
 class ApiBaseHelper {
-  final String _baseUrl = "https://www.mangaeden.com/api/list/0/";
+  final String _baseUrl = "https://www.mangaeden.com/api/";
 
   Future<dynamic> get(String url) async {
     print('Api Get, url $url');

@@ -21,7 +21,7 @@ class MangaBloc {
   }
 
   fetchMangaList() async {
-    mangaListSink.add(ApiResponse.loading('Fetching Movies'));
+    mangaListSink.add(ApiResponse.loading('Fetching Mangas'));
     try {
       List<Manga> movies = await _mangaRepository.fetchMangaList();
       mangaListSink.add(ApiResponse.completed(movies));
