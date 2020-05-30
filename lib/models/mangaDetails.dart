@@ -3,7 +3,7 @@ class MangaDetails {
   List<String> categories;
   Chapters chapters;
   int chaptersLen;
-  int created;
+  double created;
   String description;
   int hits;
   String image;

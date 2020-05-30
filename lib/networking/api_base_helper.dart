@@ -22,59 +22,59 @@ class ApiBaseHelper {
   }
 }
 
-class MangaBaseHelper {
-  final String _baseUrl = "https://www.mangaeden.com/api/manga/";
+//class MangaBaseHelper {
+//  final String _baseUrl = "https://www.mangaeden.com/api/manga/";
+//
+//  Future<dynamic> get(String url) async {
+//    print('Api Get, url $url');
+//    var responseJson;
+//    try {
+//      final response = await http.get(_baseUrl + url);
+//      responseJson = _returnResponse(response);
+//    } on SocketException {
+//      print('No net');
+//      throw FetchDataException('No Internet connection');
+//    }
+//    print('api get recieved!');
+//    return responseJson;
+//  }
+//}
 
-  Future<dynamic> get(String url) async {
-    print('Api Get, url $url');
-    var responseJson;
-    try {
-      final response = await http.get(_baseUrl + url);
-      responseJson = _returnResponse(response);
-    } on SocketException {
-      print('No net');
-      throw FetchDataException('No Internet connection');
-    }
-    print('api get recieved!');
-    return responseJson;
-  }
-}
+//class ChapterBaseHelper {
+//  final String _baseUrl = "https://www.mangaeden.com/api/chapter/";
+//
+//  Future<dynamic> get(String url) async {
+//    print('Api Get, url $url');
+//    var responseJson;
+//    try {
+//      final response = await http.get(_baseUrl + url);
+//      responseJson = _returnResponse(response);
+//    } on SocketException {
+//      print('No net');
+//      throw FetchDataException('No Internet connection');
+//    }
+//    print('api get recieved!');
+//    return responseJson;
+//  }
+//}
 
-class ChapterBaseHelper {
-  final String _baseUrl = "https://www.mangaeden.com/api/chapter/";
-
-  Future<dynamic> get(String url) async {
-    print('Api Get, url $url');
-    var responseJson;
-    try {
-      final response = await http.get(_baseUrl + url);
-      responseJson = _returnResponse(response);
-    } on SocketException {
-      print('No net');
-      throw FetchDataException('No Internet connection');
-    }
-    print('api get recieved!');
-    return responseJson;
-  }
-}
-
-class PagesBaseHelper {
-  final String _baseUrl = "https://cdn.mangaeden.com/mangasimg/";
-
-  Future<dynamic> get(String url) async {
-    print('Api Get, url $url');
-    var responseJson;
-    try {
-      final response = await http.get(_baseUrl + url);
-      responseJson = _returnResponse(response);
-    } on SocketException {
-      print('No net');
-      throw FetchDataException('No Internet connection');
-    }
-    print('api get recieved!');
-    return responseJson;
-  }
-}
+//class PagesBaseHelper {
+//  final String _baseUrl = "https://cdn.mangaeden.com/mangasimg/";
+//
+//  Future<dynamic> get(String url) async {
+//    print('Api Get, url $url');
+//    var responseJson;
+//    try {
+//      final response = await http.get(_baseUrl + url);
+//      responseJson = _returnResponse(response);
+//    } on SocketException {
+//      print('No net');
+//      throw FetchDataException('No Internet connection');
+//    }
+//    print('api get recieved!');
+//    return responseJson;
+//  }
+//}
 
 dynamic _returnResponse(http.Response response) {
   switch (response.statusCode) {

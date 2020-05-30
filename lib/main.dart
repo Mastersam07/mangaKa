@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'GeekLib',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
-        primarySwatch: Colors.yellow,
+        primaryColor: Colors.black,
         platform: TargetPlatform.iOS,
       ),
       home: MangaScreen(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:komikkurida/blocs/manga_bloc.dart';
 import 'package:komikkurida/models/manga.dart';
 import 'package:komikkurida/networking/api_response.dart';
+import 'package:komikkurida/views/manga_detail.dart';
 
 class MangaScreen extends StatefulWidget {
   @override
@@ -27,7 +28,7 @@ class _MangaScreenState extends State<MangaScreen> {
           onPressed: () {},
         ),
         title: Text(
-          'GeekLib',
+          'MangaX',
 //          style: TextStyle(
 ////            color: Colors.lightGreen,
 //            fontSize: 28,
@@ -41,7 +42,7 @@ class _MangaScreenState extends State<MangaScreen> {
         ],
 //        backgroundColor: Colors.black54,
       ),
-//      backgroundColor: Colors.black54,
+      backgroundColor: Colors.black54,
       body: RefreshIndicator(
         onRefresh: () => _bloc.fetchMangaList(),
         child: StreamBuilder<ApiResponse<List<Manga>>>(
@@ -95,16 +96,21 @@ class MangaList extends StatelessWidget {
           padding: const EdgeInsets.all(0.0),
           child: InkWell(
             onTap: () {
-//              Navigator.of(context).push(MaterialPageRoute(
-//                  builder: (context) => MovieDetail(movieList[index].id)));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MangaDetail(mangaList[index].id)));
             },
             child: Card(
               child: Padding(
                 padding: const EdgeInsets.all(0.0),
-                child: Image.network(
-                  'https://cdn.mangaeden.com/mangasimg/${mangaList[index].image}',
-                  fit: BoxFit.fill,
-                ),
+                child: mangaList[index].image != null
+                    ? Image.network(
+                        'https://cdn.mangaeden.com/mangasimg/${mangaList[index].image}',
+                        fit: BoxFit.fill,
+                      )
+                    : Image.network(
+                        'https://wallup.net/wp-content/uploads/2017/10/25/487437-anime_girls-404_Not_Found-glowing_eyes.jpg',
+                        fit: BoxFit.fill,
+                      ),
               ),
             ),
           ),
@@ -168,14 +174,14 @@ class Loading extends StatelessWidget {
             loadingMessage,
             textAlign: TextAlign.center,
             style: TextStyle(
-//              color: Colors.lightGreen,
+              color: Colors.lightGreen,
               fontSize: 24,
             ),
           ),
           SizedBox(height: 24),
           CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen),
-          ),
+//            valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen),
+              ),
         ],
       ),
     );
