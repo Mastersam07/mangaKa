@@ -11,11 +11,18 @@ komikkurida is a free and open source manga reader for mobile devices(Android/iO
 ## Features
 
 Features include:
-* [ ] Online reading from mangaEden
-* [ ] Local reading of downloaded manga
+* [ ] Read Manga online
+* [ ] Download Manga
 * [ ] Categories to organize your library
 * [ ] Light and dark themes
 * [ ] Create backups locally to read offline or to your desired cloud service
+
+## 📸 ScreenShots
+
+| Light| Dark|
+|------|-------|
+|<img src="ss/ss1.png" width="250">|<img src="ss/ss2.png" width="250">|
+
 
 ## Download
 Get the app from our [releases page](https://github.com/mastersam07/komikkurida/releases).
