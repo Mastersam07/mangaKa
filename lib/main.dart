@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:komikkurida/models/data.dart';
 import 'package:komikkurida/views/detail.dart';
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
       title: 'GeekLib',
       debugShowCheckedModeBanner: false,
       theme: new ThemeData(
-        primaryColor: Colors.black,
+        primarySwatch: Colors.blue,
+        primaryColorBrightness: Brightness.light,
         platform: TargetPlatform.iOS,
       ),
       home: MangaScreen(),

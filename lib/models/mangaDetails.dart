@@ -1,5 +1,6 @@
 class MangaDetails {
   String alias;
+  String author;
   List<String> categories;
   Chapters chapters;
   int chaptersLen;
@@ -14,6 +15,7 @@ class MangaDetails {
 
   MangaDetails(
       {this.alias,
+      this.author,
       this.categories,
       this.chapters,
       this.chaptersLen,
@@ -28,6 +30,7 @@ class MangaDetails {
 
   MangaDetails.fromJson(Map<String, dynamic> json) {
     alias = json['alias'];
+    author = json['author'];
     categories = json['categories'].cast<String>();
 //    chaptersId = json['chapters'][3];
     chapters = Chapters.fromList(json["chapters"]);
@@ -45,6 +48,7 @@ class MangaDetails {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['alias'] = this.alias;
+    data['author'] = this.author;
     data['categories'] = this.categories;
     data['chapters'] = this.chapters;
     data['chapters_len'] = this.chaptersLen;
@@ -73,8 +77,8 @@ class Chapters {
 }
 
 class Items {
-  int data1;
-  double data2;
+  String data1;
+  String data2;
   String data3;
   String data4;
 
@@ -82,6 +86,9 @@ class Items {
 
   factory Items.fromList(List myData) {
     return Items(
-        data1: myData[0], data2: myData[1], data3: myData[2], data4: myData[3]);
+        data1: myData[0].toString(),
+        data2: myData[1].toString(),
+        data3: myData[2].toString(),
+        data4: myData[3].toString());
   }
 }

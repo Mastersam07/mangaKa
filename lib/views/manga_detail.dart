@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 import 'package:komikkurida/blocs/manga_detail_bloc.dart';
 import 'package:komikkurida/models/mangaDetails.dart';
 import 'package:komikkurida/networking/api_response.dart';
+import 'package:komikkurida/utils/rating_bar.dart';
 
 class MangaDetail extends StatefulWidget {
   final String selectedManga;
@@ -28,44 +28,50 @@ class _MangaDetailState extends State<MangaDetail> {
         elevation: 0.0,
         leading: Icon(Icons.menu),
         actions: <Widget>[
-          Icon(Icons.search),
+          IconButton(
+            icon: Icon(
+              Icons.lightbulb_outline,
+              color: Colors.black,
+            ),
+            onPressed: null,
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+            onPressed: null,
+          ),
         ],
         title: Text(
           'MangaX',
           style: TextStyle(
-//            color: Colors.white,
             fontSize: 20,
           ),
         ),
-//        backgroundColor: Color(0xFF333333),
       ),
-      backgroundColor: Colors.black54,
-      body: RefreshIndicator(
-        onRefresh: () =>
-            _mangaDetailBloc.fetchMangaDetail(widget.selectedManga),
-        child: StreamBuilder<ApiResponse<MangaDetails>>(
-          stream: _mangaDetailBloc.mangaDetailStream,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              switch (snapshot.data.status) {
-                case Status.LOADING:
-                  return Loading(loadingMessage: snapshot.data.message);
-                  break;
-                case Status.COMPLETED:
-                  return ShowMangaDetail(displayManga: snapshot.data.data);
-                  break;
-                case Status.ERROR:
-                  return Error(
-                    errorMessage: snapshot.data.message,
-                    onRetryPressed: () =>
-                        _mangaDetailBloc.fetchMangaDetail(widget.selectedManga),
-                  );
-                  break;
-              }
+      body: StreamBuilder<ApiResponse<MangaDetails>>(
+        stream: _mangaDetailBloc.mangaDetailStream,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            switch (snapshot.data.status) {
+              case Status.LOADING:
+                return Loading(loadingMessage: snapshot.data.message);
+                break;
+              case Status.COMPLETED:
+                return ShowMangaDetail(displayManga: snapshot.data.data);
+                break;
+              case Status.ERROR:
+                return Error(
+                  errorMessage: snapshot.data.message,
+                  onRetryPressed: () =>
+                      _mangaDetailBloc.fetchMangaDetail(widget.selectedManga),
+                );
+                break;
             }
-            return Container();
-          },
-        ),
+          }
+          return Container();
+        },
       ),
     );
   }
@@ -84,137 +90,119 @@ class ShowMangaDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      body: Stack(fit: StackFit.expand, children: [
-        displayManga.image != null
-            ? Image.network(
-                'https://cdn.mangaeden.com/mangasimg/${displayManga.image}',
-                fit: BoxFit.fill,
-              )
-            : Image.network(
-                'https://wallup.net/wp-content/uploads/2017/10/25/487437-anime_girls-404_Not_Found-glowing_eyes.jpg',
-                fit: BoxFit.fill,
-              ),
-        new BackdropFilter(
-          filter: new ui.ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-          child: new Container(
-            color: Colors.black.withOpacity(0.5),
-          ),
-        ),
-        new SingleChildScrollView(
-          child: new Container(
-            margin: const EdgeInsets.all(20.0),
-            child: new Column(
-              children: <Widget>[
-                new Container(
-                  alignment: Alignment.center,
-                  child: new Container(
-                    width: 400.0,
-                    height: 400.0,
-                  ),
-                  decoration: new BoxDecoration(
-                    borderRadius: new BorderRadius.circular(10.0),
-                    image: new DecorationImage(
-                        image: displayManga.image != null
-                            ? NetworkImage(
-                                'https://cdn.mangaeden.com/mangasimg/${displayManga.image}',
-//                          fit: BoxFit.fill,
-                              )
-                            : NetworkImage(
-                                'https://wallup.net/wp-content/uploads/2017/10/25/487437-anime_girls-404_Not_Found-glowing_eyes.jpg',
-//                          fit: BoxFit.fill,
-                              ),
-                        fit: BoxFit.cover),
-                    boxShadow: [
-                      new BoxShadow(
-//                          color: Colors.black,
-                          blurRadius: 20.0,
-                          offset: new Offset(0.0, 10.0))
-                    ],
-                  ),
-                ),
-                new Container(
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 20.0, horizontal: 0.0),
-                  child: new Row(
-                    children: <Widget>[
-                      new Expanded(
-                          child: new Text(
-                        displayManga.description,
-                        style: new TextStyle(
-                            color: Colors.white,
-                            fontSize: 30.0,
-                            fontFamily: 'Arvo'),
-                      )),
-                      new Text(
-                        (displayManga.hits).toString(),
-//                      '${widget.movie['vote_average']}/10',
-                        style: new TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontFamily: 'Arvo'),
+    ///detail of book image and it's pages
+    final topLeft = Column(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Hero(
+            tag: displayManga.title,
+            child: Material(
+              elevation: 15.0,
+              shadowColor: Colors.yellow.shade900,
+              child: Image(
+                image: displayManga.image != null
+                    ? NetworkImage(
+                        'https://cdn.mangaeden.com/mangasimg/${displayManga.image}',
                       )
-                    ],
-                  ),
-                ),
-                new Text(displayManga.title,
-                    style:
-                        new TextStyle(color: Colors.white, fontFamily: 'Arvo')),
-                new Padding(padding: const EdgeInsets.all(10.0)),
-                new Row(
-                  children: <Widget>[
-                    new Expanded(
-                        child: new Container(
-                      width: 150.0,
-                      height: 60.0,
-                      alignment: Alignment.center,
-                      child: new Text(
-                        'Rate Movie',
-                        style: new TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Arvo',
-                            fontSize: 20.0),
+                    : NetworkImage(
+                        'https://wallup.net/wp-content/uploads/2017/10/25/487437-anime_girls-404_Not_Found-glowing_eyes.jpg',
                       ),
-                      decoration: new BoxDecoration(
-                          borderRadius: new BorderRadius.circular(10.0),
-                          color: const Color(0xaa3C3261)),
-                    )),
-                    new Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: new Container(
-                        padding: const EdgeInsets.all(16.0),
-                        alignment: Alignment.center,
-                        child: new Icon(
-                          Icons.share,
-                          color: Colors.white,
-                        ),
-                        decoration: new BoxDecoration(
-                            borderRadius: new BorderRadius.circular(10.0),
-                            color: const Color(0xaa3C3261)),
-                      ),
-                    ),
-                    new Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: new Container(
-                          padding: const EdgeInsets.all(16.0),
-                          alignment: Alignment.center,
-                          child: new Icon(
-                            Icons.bookmark,
-                            color: Colors.white,
-                          ),
-                          decoration: new BoxDecoration(
-                              borderRadius: new BorderRadius.circular(10.0),
-                              color: const Color(0xaa3C3261)),
-                        )),
-                  ],
-                )
-              ],
+                fit: BoxFit.cover,
+              ),
             ),
           ),
+        ),
+        text(
+          '${displayManga.chaptersLen} Chapters',
+          color: Colors.black38,
+          size: 12,
         )
-      ]),
+      ],
+    );
+
+    ///detail top right
+    final topRight = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        text('${displayManga.title}',
+            size: 16, isBold: true, padding: EdgeInsets.only(top: 16.0)),
+        text(
+          'by ${displayManga.author}',
+          color: Colors.black54,
+          size: 12,
+          padding: EdgeInsets.only(top: 8.0, bottom: 16.0),
+        ),
+        Row(
+          children: <Widget>[
+            text(
+              'Free',
+              isBold: true,
+              padding: EdgeInsets.only(right: 8.0),
+            ),
+            RatingBar(rating: (displayManga.hits).toDouble())
+          ],
+        ),
+        SizedBox(height: 32.0),
+        Material(
+          borderRadius: BorderRadius.circular(20.0),
+          shadowColor: Colors.blue.shade200,
+          elevation: 5.0,
+          child: MaterialButton(
+            onPressed: () {},
+            minWidth: 160.0,
+            color: Colors.blue,
+            child: text('READ NOW', color: Colors.white, size: 13),
+          ),
+        ),
+      ],
+    );
+
+    final topContent = Container(
+      padding: EdgeInsets.only(bottom: 16.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Flexible(flex: 2, child: topLeft),
+          Flexible(flex: 3, child: topRight),
+        ],
+      ),
+    );
+
+    ///scrolling text description
+    final bottomContent = SingleChildScrollView(
+      padding: EdgeInsets.all(16.0),
+      child: Text(
+        displayManga.description,
+        style: TextStyle(fontSize: 13.0, height: 1.5),
+      ),
+    );
+
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[topContent, bottomContent],
+        ),
+      ),
     );
   }
+
+  ///create text widget
+  text(String data,
+          {Color color = Colors.black87,
+          num size = 14,
+          EdgeInsetsGeometry padding = EdgeInsets.zero,
+          bool isBold = false}) =>
+      Padding(
+        padding: padding,
+        child: Text(
+          data,
+          style: TextStyle(
+              color: color,
+              fontSize: size.toDouble(),
+              fontWeight: isBold ? FontWeight.bold : FontWeight.normal),
+        ),
+      );
 }
 
 class Error extends StatelessWidget {
@@ -244,9 +232,7 @@ class Error extends StatelessWidget {
             color: Colors.redAccent,
             child: Text(
               'Retry',
-              style: TextStyle(
-//                color: Colors.white,
-                  ),
+              style: TextStyle(),
             ),
             onPressed: onRetryPressed,
           )
@@ -271,7 +257,6 @@ class Loading extends StatelessWidget {
             loadingMessage,
             textAlign: TextAlign.center,
             style: TextStyle(
-//              color: Colors.lightGreen,
               fontSize: 24,
             ),
           ),

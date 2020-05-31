@@ -29,20 +29,30 @@ class _MangaScreenState extends State<MangaScreen> {
         ),
         title: Text(
           'MangaX',
-//          style: TextStyle(
-////            color: Colors.lightGreen,
-//            fontSize: 28,
-//          ),
+          style: TextStyle(
+//            color: Colors.lightGreen,
+            fontSize: 20,
+          ),
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
+            icon: Icon(
+              Icons.lightbulb_outline,
+              color: Colors.black,
+            ),
             onPressed: () {},
-          )
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: Colors.black,
+            ),
+            onPressed: null,
+          ),
         ],
 //        backgroundColor: Colors.black54,
       ),
-      backgroundColor: Colors.black54,
+//      backgroundColor: Colors.black54,
       body: RefreshIndicator(
         onRefresh: () => _bloc.fetchMangaList(),
         child: StreamBuilder<ApiResponse<List<Manga>>>(
@@ -174,14 +184,13 @@ class Loading extends StatelessWidget {
             loadingMessage,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.lightGreen,
               fontSize: 24,
             ),
           ),
           SizedBox(height: 24),
           CircularProgressIndicator(
-//            valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen),
-              ),
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.lightGreen),
+          ),
         ],
       ),
     );
