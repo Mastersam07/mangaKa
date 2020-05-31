@@ -3,7 +3,7 @@
 | [![Build](https://github.com/mastersam07/komikkurida/workflows/Build%20Client/badge.svg)](https://github.com/Mastersam07/komikkurida/actions?query=workflow%3A%22Build+Client%22) | [![stable release](https://img.shields.io/github/release/mastersam07/komikkurida.svg?maxAge=3600&label=download)](https://github.com/mastersam07/komikkurida/releases) | [![Tests](https://github.com/mastersam07/komikkurida/workflows/Client%20Tests/badge.svg)](https://github.com/Mastersam07/komikkurida/actions?query=workflow%3A%22Client+Tests%22) |  |  |
 
 
-# ![app icon]()komikkurida
+# []()mangaX
 komikkurida is a free and open source manga reader for mobile devices(Android/iOS)
 
 <!--![screenshots of app](./.github/readme-images/screens.png)-->
