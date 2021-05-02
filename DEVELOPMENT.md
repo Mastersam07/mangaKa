@@ -22,9 +22,7 @@
 
 <br />
 <hr />
-
-# 🚧 Under construction 🚧
-
+<br />
 
 <p align="center">
 <img alt="GitHub issues" src="https://img.shields.io/github/issues/Mastersam07/mangaKa">
