@@ -44,12 +44,12 @@ class _MyAppState extends State<MyApp> {
       child: Consumer<DarkThemeProvider>(
         builder: (context, appState, child) {
           return MaterialApp(
-            title: 'MangaX',
+            title: 'otakuzōn',
             debugShowCheckedModeBanner: false,
             theme:
                 appState.darkTheme ? AppTheme.darkTheme : AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
-            themeMode: appState.darkTheme ? ThemeMode.dark : ThemeMode.light,
+            themeMode: ThemeMode.system,
             home: const Splash(),
             onGenerateRoute: router.Router.generateRoute,
           );

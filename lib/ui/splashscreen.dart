@@ -55,7 +55,7 @@ class _SplashState extends State<Splash> {
               height: screenAwareSize(32, context),
             ),
             Text(
-              'komikkurida',
+              'Otakuzōn',
               style: Theme.of(context).textTheme.headline1,
             )
           ],
