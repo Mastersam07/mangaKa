@@ -1,4 +1,4 @@
-package io.mastersam.otakuzōn
+package io.mastersam.otakuzon
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

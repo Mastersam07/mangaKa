@@ -63,6 +63,10 @@ class AppTheme {
         fontSize: 12.0,
       ),
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+    ),
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -124,6 +128,10 @@ class AppTheme {
         color: Colors.white,
         fontSize: 12.0,
       ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
     ),
   );
 }

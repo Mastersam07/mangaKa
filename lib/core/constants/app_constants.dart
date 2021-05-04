@@ -4,12 +4,13 @@ import 'package:intl/intl.dart';
 
 class RoutePaths {
   static const String Onboarding = '/';
-  static const String SignUp = '/signup';
-  static const String Login = '/login';
+  static const String HomeScreen = '/home';
   static const String HomeTab = '/homeTab';
-  static const String Dashboard = '/home';
-  static const String ForgotPassword = '/forgotPassword';
-  static const String SignUpDetails = '/signupDetails';
+  static const String AnimeHome = '/animeHome';
+  static const String MangaHome = '/mangahome';
+  static const String Downloads = '/downloads';
+  static const String Settings = '/settings';
+  static const String Notifications = '/notification';
 }
 
 // ignore: avoid_bool_literals_in_conditional_expressions

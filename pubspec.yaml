@@ -1,5 +1,6 @@
 name: otakuzon
-description: Otakuzōn is a free and open source anime viewer and manga reader for mobile devices(Android/iOS)
+description: Otakuzōn is a free and open source anime viewer and manga reader
+  for mobile devices(Android/iOS)
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -21,9 +22,12 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.2
   flutter_dotenv: ^3.1.0
+  flutter_local_notifications: ^5.0.0+3
   get_it: ^6.1.1
+  hive: ^2.0.4
   http: ^0.12.1
   intl: ^0.17.0
+  path_provider: ^2.0.1
   provider: ^5.0.0
   quick_actions: ^0.6.0+1
 

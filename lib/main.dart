@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart' as DotEnv;
 
+import 'core/services/navigator.dart';
 import 'core/viewmodels/theme_provider.dart';
 import 'locator.dart';
 import 'ui/shared/app_theme.dart';
@@ -52,8 +53,8 @@ class _MyAppState extends State<MyApp> {
             themeMode: ThemeMode.system,
             home: const Splash(),
             onGenerateRoute: router.Router.generateRoute,
+            navigatorKey: locator<NavigationService>().navigationKey,
           );
-          // );
         },
       ),
     );

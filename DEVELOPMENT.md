@@ -7,12 +7,12 @@
   <p align="center">
     A Mobile App built with Flutter
     <br />
-    <a href=""><strong>Try the app »</strong></a>
+    <a href="#"><strong>Try the app »</strong></a>
     <br />
-    <a href=""><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="95" width="200"></a>
+    <a href="#"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="95" width="200"></a>
     <a href=""><img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg" height="95" width="200"></a>
     <br />
-    <a href="">View Demo</a>
+    <a href="#">View Demo</a>
     ·
     <a href="https://github.com/Mastersam07/mangaKa/issues">Report Bug</a>
     ·

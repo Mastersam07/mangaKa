@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'shared/ui_helpers.dart';
+import 'views/mainscreen.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key key}) : super(key: key);
@@ -24,14 +25,7 @@ class _SplashState extends State<Splash> {
             pageBuilder: (context, animation, __) {
               return FadeTransition(
                 opacity: animation,
-                child: Scaffold(
-                  body: Center(
-                    child: Text(
-                      'Some Text',
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ),
-                ),
+                child: AppHome(),
               );
             }),
       ),
